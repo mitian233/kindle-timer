@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>泡面神器</title>
+    <style>
+        @font-face {
+            font-family:'Segment7Standard';
+            src: url('src/Segment7Standard.woff') format('woff');
+            url('src/Segment7Standard.woff2') format('woff2');
+        }
+        #RemainM,#RemainS {
+            font-family: 'Segment7Standard';
+        }
+    </style>
+    <script type="application/javascript">
+        var countdown=240;
+        function timeDisp(countdown){
+            var nM=Math.floor(countdown/60);//分
+            if(nM<10) nM="0"+nM;
+            var nS=Math.floor(countdown) % 60;//秒
+            if(nS<10) nS="0"+nS;
+            document.getElementById("RemainM").innerHTML=nM;
+            document.getElementById("RemainS").innerHTML=nS;
+        }
+        function changetime(changeTimeVal){
+            countdown=countdown+changeTimeVal;
+            timeDisp(countdown);
+        }
+        function settime(val) {
+            //停止倒计时
+            if (countdown == 0) {
+                val.removeAttribute("disabled");
+                val.value="再来一碗！";
+                countdown = 300;
+                // 弹窗提醒
+                alert("可以吃了!");
+
+            } else {
+                //倒计时
+                val.setAttribute("disabled", true);
+                val.value="请耐心等待";
+                countdown--;
+
+                timeDisp(countdown);
+
+                setTimeout(function() {
+                    settime(val)
+                },1000)
+            }
+        }
+    </script>
+</head>
+
+
+<body>
+
+<br> <br> <br>
+
+<div>
+    <div style="text-align: center;">
+        <span style=font-size:3em>盖Kindle，面更香</span>
+        <p>可自定升级版</p>
+        </div>
+</div>
+
+<br> <br>
+
+<div style=font-size:2em>
+    <div style="text-align: center;">
+        剩余时间
+    </div>
+</div>
+
+<div style=font-size:10em>
+    <div style="text-align: center;">
+        <strong id="RemainM">04</strong>:<strong id="RemainS">00</strong>
+    </div>
+</div>
+
+
+
+<div>
+    <div style="text-align: center;">
+        <input type="button" style="width:148px; height:80px;font-size:2em;text-align:center" value="+10s" onclick="changetime(+10)" />
+        <input type="button" style="width:148px; height:80px;font-size:2em;text-align:center" value="-10s" onclick="changetime(-10)" />
+    </div>
+</div>
+<br>
+<div>
+    <div style="text-align: center;">
+        <input type="button" style="width:300px; height:80px;font-size:2em;text-align:center" value="开始泡面" onclick="settime(this)" />
+    </div>
+</div>
+<div>
+    <div style="text-align: center;">
+        <a href="http://maemo.cc/Timer/">Origin edition</a>
+    </div>
+</div>
+</body>
+
+</html>
