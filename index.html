@@ -33,7 +33,6 @@
             if (countdown == 0) {
                 val.removeAttribute("disabled");
                 val.value="再来一碗！";
-                countdown = 300;
                 // 弹窗提醒
                 alert("可以吃了!");
 
@@ -54,27 +53,27 @@
 </head>
 
 
-<body>
+<body style="text-align: center;">
 
 <br> <br> <br>
 
 <div>
-    <div style="text-align: center;">
+    <div>
         <span style=font-size:3em>盖Kindle，面更香</span>
-        <p>可自定升级版</p>
+        <p>可定时版</p>
         </div>
 </div>
 
 <br> <br>
 
 <div style=font-size:2em>
-    <div style="text-align: center;">
+    <div>
         剩余时间
     </div>
 </div>
 
 <div style=font-size:10em>
-    <div style="text-align: center;">
+    <div>
         <strong id="RemainM">04</strong>:<strong id="RemainS">00</strong>
     </div>
 </div>
@@ -82,20 +81,21 @@
 
 
 <div>
-    <div style="text-align: center;">
+    <div>
         <input type="button" style="width:148px; height:80px;font-size:2em;text-align:center" value="+10s" onclick="changetime(+10)" />
         <input type="button" style="width:148px; height:80px;font-size:2em;text-align:center" value="-10s" onclick="changetime(-10)" />
     </div>
 </div>
 <br>
 <div>
-    <div style="text-align: center;">
+    <div>
         <input type="button" style="width:300px; height:80px;font-size:2em;text-align:center" value="开始泡面" onclick="settime(this)" />
     </div>
 </div>
+<br>
 <div>
-    <div style="text-align: center;">
-        <a href="http://maemo.cc/Timer/">Origin edition</a>
+    <div>
+        <a href="http://maemo.cc/Timer/">Original version</a>
     </div>
 </div>
 </body>
