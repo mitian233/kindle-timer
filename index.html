@@ -26,6 +26,7 @@
         }
         function changetime(changeTimeVal){
             countdown=countdown+changeTimeVal;
+            if (countdown<0) countdown=0;
             timeDisp(countdown);
         }
         function settime(val) {
@@ -82,8 +83,6 @@
         <strong id="RemainM">04</strong>:<strong id="RemainS">00</strong>
     </div>
 </div>
-
-
 
 <div>
     <div>
