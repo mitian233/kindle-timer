@@ -6,38 +6,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     @font-face {
-      font-family:'Segment7Standard';
+      font-family: 'Segment7Standard';
       src: url('src/Segment7Standard.woff') format('woff');
     url('src/Segment7Standard.woff2') format('woff2');
     }
-    #hour,#minute{
+
+    #hour, #minute, #second {
       font-family: 'Segment7Standard';
     }
   </style>
 </head>
 <body style="text-align: center">
-<div style="transform: rotate(90deg)">
-  <p style="font-size: 10em"><span id="hour"></span>:<span id="minute"></span></p>
+<div>
+  <p style="font-size: 11em"><span id="hour"></span>:<span id="minute"></span>:<span id="second"></span></p>
 </div>
 <script type="application/javascript">
   var hour_span = document.getElementById('hour');
   var minute_span = document.getElementById('minute');
+  var second_span = document.getElementById('second');
   function addZero(val) {
     var result = val;
-    if(val<10) result='0'+val;
+    if (val < 10) result = '0' + val;
     return result;
   }
-  var date = new Date();
   setTime()
+  setInterval(setTime, 1000)
   function setTime() {
-    var utc8DiffMinutes = date.getTimezoneOffset() + 480;
+    var date = new Date();
+    var utc8DiffMinutes = date.getTimezoneOffset() + 480
     date.setMinutes(date.getMinutes() + utc8DiffMinutes);
     var hour = date.getHours();
     var minute = date.getMinutes();
+    var second = date.getSeconds();
     hour_span.innerHTML = addZero(hour);
     minute_span.innerHTML = addZero(minute);
+    second_span.innerHTML = addZero(second);
   }
-  setInterval(setTime, 60*1000)
 </script>
 </body>
 </html>
