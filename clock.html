@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Kindle座钟</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @font-face {
+            font-family:'Segment7Standard';
+            src: url('src/Segment7Standard.woff') format('woff');
+        url('src/Segment7Standard.woff2') format('woff2');
+        }
+        #year,#month,#date,#hour,#minute,#second{
+            font-family: 'Segment7Standard';
+        }
+    </style>
+</head>
+<body style="text-align: center; transform:rotate(90deg)">
+    <div>
+        <p style="font-size: 30px"><span id="year"></span>年<span id="month"></span>月<span id="date"></span>日</p>
+        <p style="font-size: 30px">星期<span id="week"></span></p>
+        <p style="font-size: 80px"><span id="hour"></span>:<span id="minute"></span>:<span id="second"></span></p>
+    </div>
+    <script type="application/javascript">
+        let year_span = document.getElementById('year');
+        let month_span = document.getElementById('month');
+        let date_span = document.getElementById('date');
+        let week_span = document.getElementById('week');
+        let hour_span = document.getElementById('hour');
+        let minute_span = document.getElementById('minute');
+        let second_span = document.getElementById('second');
+        let addZero = val => val < 10 ? '0' + val : val;
+        let trans = val => {
+            let obj = {
+                0:'日',
+                1:'一',
+                2:'二',
+                3:'三',
+                4:'四',
+                5:'五',
+                6:'六'
+            }
+            return obj[val];
+        }
+        setTime()
+        function setTime() {
+            let date = new Date();
+            let year = date.getFullYear();
+            let month = date.getMonth() + 1;
+            let day = date.getDate();
+            let hour = date.getHours();
+            let minute = date.getMinutes();
+            let second = date.getSeconds();
+            let week = date.getDay();
+
+            year_span.innerHTML = year;
+            month_span.innerHTML = addZero(month);
+            date_span.innerHTML = addZero(day);
+            week_span.innerHTML = trans(week);
+            hour_span.innerHTML = addZero(hour);
+            minute_span.innerHTML = addZero(minute);
+            second_span.innerHTML = addZero(second);
+            setInterval(setTime, 1000)
+        }
+    </script>
+</body>
+</html>
